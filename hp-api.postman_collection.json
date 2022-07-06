@@ -1,0 +1,40 @@
+{
+	"info": {
+		"_postman_id": "c1be5fac-be97-4fdd-9a5f-7b28dc218d08",
+		"name": "hp-api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20110714"
+	},
+	"item": [
+		{
+			"name": "localhost:5000/characters",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Ernie\",\r\n    \"lastname\": \"Macmillan\",\r\n    \"house\": \"Hufflepuff\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5000/characters",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"characters"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
