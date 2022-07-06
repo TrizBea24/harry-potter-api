@@ -50,7 +50,7 @@ def add_character():
 def get_characters():
     all_characters = Character.query.all()
     result = characters_schema.dump(all_characters)
-    return jsonify(result.data)
+    return jsonify(result)
 
 # Endpoint for querying a single character
 @app.route("/character/<id>", methods=["GET"])
