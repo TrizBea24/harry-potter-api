@@ -19,16 +19,23 @@ class Character(db.Model):
     lastname = db.Column(db.String(100), unique=False)
     house = db.Column(db.String(20), unique=False)
     pic = db.Column(db.String(200), unique=False)
+    bloodStatus = db.Column(db.String(100), unique=False)
+    wand = db.Column(db.String(200), unique=False)
+    patronus = db.Column(db.String(200), unique=False)
 
-    def __init__(self, name, lastname, house, pic):
+    def __init__(self, name, lastname, house, pic, bloodStatus, wand, patronus):
         self.name = name
         self.lastname = lastname
         self.house = house
         self.pic = pic
+        self.bloodStatus = bloodStatus
+        self.wand = wand
+        self.patronus = patronus
+
 
 class CharacterSchema(ma.Schema):
     class Meta:
-        fields = ('id','name', 'lastname', 'house', 'pic')
+        fields = ('id','name', 'lastname', 'house', 'pic', 'bloodStatus', 'wand', 'patronus')
 
 
 character_schema = CharacterSchema()
@@ -41,8 +48,12 @@ def add_character():
     lastname = request.json['lastname']
     house = request.json['house']
     pic = request.json['pic']
+    bloodStatus = request.json['bloodStatus']
+    wand = request.json['wand']
+    patronus = request.json['patronus']
 
-    new_character = Character(name, lastname, house, pic)
+
+    new_character = Character(name, lastname, house, pic, bloodStatus, wand, patronus)
 
     db.session.add(new_character)
     db.session.commit()
@@ -72,11 +83,17 @@ def character_update(id):
     lastname = request.json['lastname']
     house = request.json['house']
     pic = request.json['pic']
+    bloodStatus = request.json['bloodStatus']
+    wand = request.json['wand']
+    patronus = request.json['patronus']
 
     character.name = name
     character.lastname = lastname
     character.house = house
     character.pic = pic
+    character.bloodStatus = bloodStatus
+    character.wand = wand
+    character.patronus = patronus
 
     db.session.commit()
     return character_schema.jsonify(character)
